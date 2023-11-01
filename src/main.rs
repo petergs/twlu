@@ -29,13 +29,13 @@ impl LookupField {
 struct CallerName {
     caller_name: Option<String>,
     caller_type: Option<String>,
-    error_code: Option<String>,
+    error_code: Option<u64>,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
 struct LineTypeIntelligence {
     carrier_name: Option<String>,
-    error_code: Option<String>,
+    error_code: Option<u64>,
     mobile_country_code: Option<String>,
     mobile_network_code: Option<String>,
     #[serde(rename = "type")]
@@ -109,7 +109,7 @@ fn main() {
     let token = env::var("TWILIO_AUTH_TOKEN").expect("TWILIO_AUTH_TOKEN is not defined.");
 
     // handle cli
-    // might want to refactor the fields argument to a comman separated list
+    // might want to refactor the fields argument to a comma separated list
     let cli = cli();
     let matches = cli.get_matches();
     let mut fields: Vec<LookupField> = vec![];
