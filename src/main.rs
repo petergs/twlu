@@ -105,13 +105,21 @@ fn cli() -> Command {
 }
 
 fn main() {
-    let sid = env::var("TWILIO_ACCOUNT_SID").expect("TWILIO_ACCOUNT_SID is not defined.");
-    let token = env::var("TWILIO_AUTH_TOKEN").expect("TWILIO_AUTH_TOKEN is not defined.");
-
     // handle cli
     // might want to refactor the fields argument to a comma separated list
     let cli = cli();
     let matches = cli.get_matches();
+
+    // check env
+    let sid = env::var("TWILIO_ACCOUNT_SID").unwrap_or_else(|_| {
+        println!("Environment variable TWILIO_ACCOUNT_SID is not defined.");
+        process::exit(1)
+    });
+    let token = env::var("TWILIO_AUTH_TOKEN").unwrap_or_else(|_| {
+        println!("Environment variable TWILIO_AUTH_TOKEN is not defined.");
+        process::exit(1)
+    });
+
     let mut fields: Vec<LookupField> = vec![];
 
     if matches.get_flag("CALLER_NAME") {
