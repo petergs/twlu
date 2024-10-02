@@ -13,7 +13,7 @@ data in JSON format.
 
 ## Setup 
 1. Create a Twilio Account with access to the Lookup API. The API costs ~$0.01 per request. 
-2. Set the environment variables `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN`. You can retrieve this 
+2. Set the environment variables `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN`. You can retrieve these
 values by followng the directions in [this article](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them).
 
 ## Usage
